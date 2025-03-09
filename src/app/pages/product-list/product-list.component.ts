@@ -9,34 +9,41 @@ import { ProductCardComponent } from "./product-card/product-card.component";
   styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent {
+
+  async ngOnInit(){
+    const res = await fetch('https://fakestoreapi.com/products/category/electronics')
+    const data = await res.json();
+    this.products.set(data)
+  }
+
   products = signal<Product[]>([
-    {
-      id: 1,
-      title: 'Something 1',
-      price: 109.9,
-      image:'https://i.ibb.co/ZHT2r1s/C-mara-Sony-Alpha-A7-III.png', 
-      stock: 10,
-    },
-    {
-      id: 2,
-      title: 'Something 2',
-      price: 109.9,
-      image:'https://i.ibb.co/BcqzzgF/Consola-Play-Station-5.png', 
-      stock: 0,
-    },
-    {
-      id: 3,
-      title: 'Something 3',
-      price: 109.9,
-      image:'https://i.ibb.co/BcqzzgF/Consola-Play-Station-5.png',  
-    },
-    {
-      id: 4,
-      title: 'Something 4',
-      price: 109.9,
-      image:'https://i.ibb.co/ZHT2r1s/C-mara-Sony-Alpha-A7-III.png', 
-      stock: 5 
-    },
+    // {
+    //   id: 1,
+    //   title: 'Something 1',
+    //   price: 109.9,
+    //   image:'https://i.ibb.co/ZHT2r1s/C-mara-Sony-Alpha-A7-III.png', 
+    //   stock: 10,
+    // },
+    // {
+    //   id: 2,
+    //   title: 'Something 2',
+    //   price: 109.9,
+    //   image:'https://i.ibb.co/BcqzzgF/Consola-Play-Station-5.png', 
+    //   stock: 0,
+    // },
+    // {
+    //   id: 3,
+    //   title: 'Something 3',
+    //   price: 109.9,
+    //   image:'https://i.ibb.co/BcqzzgF/Consola-Play-Station-5.png',  
+    // },
+    // {
+    //   id: 4,
+    //   title: 'Something 4',
+    //   price: 109.9,
+    //   image:'https://i.ibb.co/ZHT2r1s/C-mara-Sony-Alpha-A7-III.png', 
+    //   stock: 5 
+    // },
 
   ])
 }
